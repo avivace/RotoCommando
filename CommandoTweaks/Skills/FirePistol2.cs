@@ -13,13 +13,14 @@ namespace HIFUCommandoTweaks.Skills
 {
     internal class FirePistol2 : TweakBase
     {
-        public override string SkillToken => "special_alt1";
-        public override string Name => ": Special :: Frag Grenade";
-
-        public override string DescText => "Fire a <style=cIsDamage>piercing</style> bullet for <style=cIsDamage> 2 damage</style>. Deals <style=cIsDamage>40%</style> more total damage for each enemy pierced.";
+        public static float CustomProcCoefficient;
+        public override string SkillToken => "FirePistol2";
+        public override string Name => "M1";
+        public override string DescText => "A description";
 
         public override void Init()
         {
+            CustomProcCoefficient = ConfigOption(1f, "M1 Proc", "Decimal. Vanilla is 1");
             base.Init();
         }
 
@@ -44,8 +45,7 @@ namespace HIFUCommandoTweaks.Skills
                 x => x.MatchNewobj<BulletAttack>()))
             {
                 c.Emit(OpCodes.Dup);
-                c.Emit(OpCodes.Ldc_R4, 1.25f);
-
+                c.Emit(OpCodes.Ldc_R4, CustomProcCoefficient);
                 c.Emit<BulletAttack>(OpCodes.Stfld, nameof(BulletAttack.procCoefficient));
 
             }

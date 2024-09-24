@@ -1,0 +1,10 @@
+﻿{
+	"name": "RotoCommando",
+	"version_number": "1.0.0",
+	"website_url": "https://github.com/avivace/RotoCommando",
+	"description": "Buffing Commando so Roto can stop trolling",
+	"dependencies": [
+		"bbepis-BepInExPack-5.4.9",
+		"RiskofThunder-HookGenPatcher-1.2.1"
+	]
+}
